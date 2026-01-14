@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>PO-Extra</title>
 </head>
 <body>
@@ -20,32 +21,21 @@
 <p id="result"></p>
 
 <script>
-const scriptURL = https://script.google.com/macros/s/AKfycbw02k7bA1u7Atk2_yen1Nx1h6gBZQcJZk9Sa8P_sSU-ndzVz6SMEekQIZW8FPPu81zl/exec;
+/* Google Apps Script Web App URL */
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbwFGb6lf0LKol4P7qw8tFJnSpL0WNHED49EhcJdnGvOnLrewQx8DZ2k2aD0B8RWOTZy/exec";
 
 document.getElementById("poForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const data = {
-        po: document.getElementById("po").value,
-        material: document.getElementById("material").value
-    };
+    const formData = new FormData();
+    formData.append("po", document.getElementById("po").value);
+    formData.append("material", document.getElementById("material").value);
+
+    document.getElementById("result").innerText = "⏳ Saving...";
 
     fetch(scriptURL, {
         method: "POST",
-        body: JSON.stringify(data)
+        body: formData
     })
-    .then(res => res.json())
-    .then(() => {
-        document.getElementById("result").innerText =
-            "Data saved to Google Sheet successfully!";
-        document.getElementById("poForm").reset();
-    })
-    .catch(() => {
-        document.getElementById("result").innerText =
-            "Error saving data";
-    });
-});
-</script>
-
-</body>
-</html>
+    .then(res => res.t
