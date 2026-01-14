@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PO-Extra</title>
+    <title>PO</title>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 <p id="result"></p>
 
 <script>
-const scriptURL = https://script.google.com/macros/s/AKfycbw02k7bA1u7Atk2_yen1Nx1h6gBZQcJZk9Sa8P_sSU-ndzVz6SMEekQIZW8FPPu81zl/exec;
+const scriptURL = "https://script.google.com/macros/s/AKfycbw02k7bA1u7Atk2_yen1Nx1h6gBZQcJZk9Sa8P_sSU-ndzVz6SMEekQIZW8FPPu81zl/exec";
 
 document.getElementById("poForm").addEventListener("submit", function(e) {
     e.preventDefault();
