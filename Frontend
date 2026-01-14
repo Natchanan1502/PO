@@ -21,8 +21,7 @@
 <p id="result"></p>
 
 <script>
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbwFGb6lf0LKol4P7qw8tFJnSpL0WNHED49EhcJdnGvOnLrewQx8DZ2k2aD0B8RWOTZy/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbxeLtOyxOWGXjZbtc5H1fdztfDdkMNUIw1KnAWJ_n-AKqnvMJi6V53bo3U8vEpjipkQ/exec";
 
 document.getElementById("poForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -45,7 +44,7 @@ document.getElementById("poForm").addEventListener("submit", function(e) {
         }
     })
     .catch(err => {
-        document.getElementById("result").innerText = "Error";
+        document.getElementById("result").innerText = "Network error";
         console.error(err);
     });
 });
@@ -53,4 +52,3 @@ document.getElementById("poForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
-
