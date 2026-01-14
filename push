@@ -1,1 +1,18 @@
+<script>
+const scriptURL = https://script.google.com/macros/s/AKfycbygC04H6IWwVJ5tsY42zzYCUXkaNPw5ob73Mvzc0lieovlxykYqWCcNR4E1cZikNBBU/exec;
+
+document.getElementById("poForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify({
+            po: document.getElementById("po").value,
+            material: document.getElementById("material").value
+        })
+    })
+    .then(() => alert("Saved to Excel successfully"))
+    .catch(() => alert("Error"));
+});
+</script>
 
