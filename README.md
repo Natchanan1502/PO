@@ -1,24 +1,31 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<button onclick="send()">SEND TEST</button>
-
 <script>
-function send() {
-  const data = new FormData();
-  data.append("po", "TEST_PO");
-  data.append("material", "TEST_MATERIAL");
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbwFGb6lf0LKol4P7qw8tFJnSpL0WNHED49EhcJdnGvOnLrewQx8DZ2k2aD0B8RWOTZy/exec";
 
-  fetch("https://script.google.com/macros/s/AKfycbwFGb6lf0LKol4P7qw8tFJnSpL0WNHED49EhcJdnGvOnLrewQx8DZ2k2aD0B8RWOTZy/exec", {
-    method: "POST",
-    body: data
-  })
-  .then(r => r.text())
-  .then(t => alert(t))
-  .catch(e => alert("ERROR"));
-}
+document.getElementById("poForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append("po", document.getElementById("po").value);
+    data.append("material", document.getElementById("material").value);
+
+    document.getElementById("result").innerText = "Saving...";
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: data
+    })
+    .then(res => res.text())
+    .then(text => {
+        document.getElementById("result").innerText = text;
+        if (text === "success") {
+            document.getElementById("poForm").reset();
+        }
+    })
+    .catch(err => {
+        document.getElementById("result").innerText = "Network error";
+        console.error(err);
+    });
+});
 </script>
 
-</body>
-</html>
